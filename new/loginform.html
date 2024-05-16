@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Form</title>
+
+    <style>
+        .container {
+            width: 300px;
+            margin: 50px auto;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            background-color: #f9f9f9;
+        }
+
+        h2 {
+            text-align: center;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        input {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        button {
+            width: 100%;
+            padding: 10px;
+            background-color: #007bff;
+            border: none;
+            border-radius: 4px;
+            color: #fff;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        .error {
+            color: red;
+            font-size: 12px;
+        }
+    </style>
+
+</head>
+
+<body>
+    <div class="container">
+        <h2>Login Form</h2>
+        <form id="loginForm">
+            <div class="form-group">
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" placeholder="Enter your email" required>
+                <span id="emailError" class="error"></span>
+            </div>
+            <div class="form-group">
+                <label for="password">Password:</label>
+                <input type="password" id="password" name="password" placeholder="Enter your password" required>
+                <span id="passwordError" class="error"></span>
+            </div>
+            <button type="button" onclick="login()">Login</button>
+        </form>
+    </div>
+
+    <!-- <script src="script.js"></script> -->
+
+    <script>
+
+        function validateEmail(email) {
+            var emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+            return emailRegex.test(email);
+        }
+
+        function validatePassword(password) {
+            var passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
+            return passwordRegex.test(password);
+        }
+
+        function login() {
+            var email = document.getElementById("email").value;
+            var password = document.getElementById("password").value;
+            var emailError = document.getElementById("emailError");
+            var passwordError = document.getElementById("passwordError");
+
+
+
+            emailError.textContent = "";
+            passwordError.textContent = "";
+            // email = null;
+            if (email == "") {
+                emailError.textContent = "Enter the email";
+                return;
+            }
+
+            if (!password) {
+                passwordError.textContent = "Enter the password";
+                return;
+            }
+
+
+
+
+            // validateForm();
+
+
+
+
+            if (!validateEmail(email)) {
+                emailError.textContent = "Invalid email address";
+                return;
+
+            }
+
+            if (!validatePassword(password)) {
+                passwordError.textContent = "Invalid password. Password must be at least 8 characters long .";
+                return;
+            }
+
+            // If both email and password are valid, proceed with login process
+            alert("Login successful!");
+            // You can add code here to perform further actions such as sending the data to a server for authentication.
+        }
+
+        // function validateForm() {
+        //   var x = document.getElementById("email").value;
+        //   if (x == "") {
+        //     alert("Name must be filled out");
+        //     return false;
+        //   }
+        // }
+
+
+
+
+    </script>
+
+
+</body>
+
+</html>
